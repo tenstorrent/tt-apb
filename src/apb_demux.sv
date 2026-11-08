@@ -44,7 +44,7 @@ module apb_demux #(
     end
 
     always_comb begin
-      if (select_i < NoMstPorts) begin
+      if ({1'b0, select_i} < NoMstPorts[SelectWidth:0]) begin
         slv_resp_o.pready  = mst_resp_i[select_i].pready;
         slv_resp_o.prdata  = mst_resp_i[select_i].prdata;
         slv_resp_o.pslverr = mst_resp_i[select_i].pslverr;
